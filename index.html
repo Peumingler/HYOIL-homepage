@@ -16,10 +16,10 @@
 
 <body class=""> <!-- TODO: 동영상이 없는 곳에서 has-navbar-fixed-top 추가-->
     <!--상단 navbar-->
-    <nav class="navbar is-light" role="navigation" aria-label="main navigation"> <!--TODO: 동영상이 없는 곳에서 is-fixed-top 추가-->
+    <nav class="navbar is-light" id="navbarMenu" role="navigation" aria-label="main navigation"> <!--TODO: 동영상이 없는 곳에서 is-fixed-top 추가-->
         <!--상단 로고 부분-->
         <div class="navbar-brand">
-            <a class="navbar-item" href="효일 홈페이지 주소">
+            <a class="navbar-item" v-on:click="change('start','1')">
                 <img src="images/hyoil_logo.png">
             </a>
 
@@ -33,66 +33,62 @@
         </div>
 
         <!--상단 메뉴-->
-        <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-menu">
             <div class="navbar-start">
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link" id="app">
-                        {{ message }}
+                    <a class="navbar-link" v-on:click="change('hyoil', '1')">
+                        HYOIL
                     </a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('hyoil', '1')">
                             우리는
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('hyoil', '2')">
                             인사말
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('hyoil', '3')">
                             회사개요
                         </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('hyoil', '4')">
                             회사현황
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('hyoil', '5')">
                             개발현황
                         </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('hyoil', '6')">
                             Vision
                         </a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
+                    <a class="navbar-link" v-on:click="change('healo', '1')">
                         HEALO Platform
                     </a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('healo', '1')">
                             학교 체육수업
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('healo', '2')">
                             체육학원
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('healo', '3')">
                             APT 커뮤니티센터
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('healo', '4')">
                             헬스트레이닝
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('healo', '5')">
                             K-POP 댄스
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" v-on:click="change('healo', '6')">
                             메디컬 센터
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            Report an issue
                         </a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
+                    <a class="navbar-link" v-on:click="change('aieps')">
                         AI EPS
                     </a>
                     <div class="navbar-dropdown">
@@ -102,7 +98,7 @@
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
+                    <a class="navbar-link" v-on:click="change('klca')">
                         KLCA
                     </a>
                     <div class="navbar-dropdown">
@@ -123,11 +119,17 @@
     </nav>
 
     <!--메인 페이지-->
-    <article>
-        <!--백그라운드 동영상-->
-        <div style="z-index: -1;">
-            <video src="./videos/video_bg.mp4" type="video/ogg" poster="./images/image_bg.png" loop autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
-        </div>
+    <article id="article">
+        <!-- 첫 페이지 -->
+        <template v-if="contentList.start">
+            <div style="z-index: -1;">
+                <video src="./videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
+            </div>
+        </template>
+        <!-- HYOIL 페이지 -->
+        <template v-if="contentList.hyoil">
+            <strong>HYOIL PAGE TEST</strong>
+        </template>
     </article>
 
     <!--footer-->
