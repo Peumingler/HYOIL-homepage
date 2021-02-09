@@ -1,0 +1,54 @@
+/*사이드바 관련 CSS*/
+
+.sidebar {
+    height: 100%;
+    width: 10rem;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.sidebar a {
+    /*A 태그를 수직으로 나열할 수 있게 block요소로 만든다*/
+    display: block;
+}
+
+.sidebar img {
+    position: absolute;
+    width: auto;
+    height: 40%;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.sidebar i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sidebar .bottom {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(270deg);
+    color: grey;
+}
+
+
+/*article 관련*/
+
+.article {
+    height: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+.article video {
+    height: 100%;
+    width: 100%;
+}

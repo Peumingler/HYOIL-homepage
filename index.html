@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--import css-->
     <link rel="stylesheet" href="bulma.min.css">
-
+    <link rel="stylesheet" href="css/main.css">
+    <!--import icon by css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <!--import js-->
     <script src="js/framework/vue.js"></script>
     <script src="js/navbar.js"></script>
@@ -14,25 +16,22 @@
     <title>HYOIL</title>
 </head>
 
-<body class=""> <!-- TODO: 동영상이 없는 곳에서 has-navbar-fixed-top 추가-->
+<body>
+    <!-- TODO: 동영상이 없는 곳에서 has-navbar-fixed-top 추가-->
     <!--상단 navbar-->
-    <nav class="navbar is-light" id="navbarMenu" role="navigation" aria-label="main navigation"> <!--TODO: 동영상이 없는 곳에서 is-fixed-top 추가-->
-        <!--상단 로고 부분-->
-        <div class="navbar-brand">
-            <a class="navbar-item" v-on:click="change('start','1')">
-                <img src="images/hyoil_logo.png">
-            </a>
+    <nav class="sidebar">
+        <!--로고 : 사이드바의 40% 차지 -->
+        <a>
+            <img src="images/hyoil_logo.png">
+        </a>
+        <a>
+            <i class="fas fa-angle-double-right fa-3x"></i>
+        </a>
+        <a class="bottom">
+            HYOIL Corporation
+        </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarMenu">
-                <!--모바일:햄버거메뉴 문양 생성용-->
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
 
-        <!--상단 메뉴-->
         <div class="navbar-menu">
             <div class="navbar-start">
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -107,41 +106,35 @@
                         </a>
                     </div>
                 </div>
-                
-            </div>
-
-            <div class="navbar-end">
-                <a class="navbar-item">
-                    Contact
-                </a>
             </div>
         </div>
     </nav>
 
     <!--메인 페이지-->
-    <article id="article">
-        <!-- 첫 페이지 -->
-        <template v-if="contentList.start">
-            <div style="z-index: -1;">
-                <video src="./videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
-            </div>
-        </template>
-        <!-- HYOIL 페이지 -->
-        <template v-if="contentList.hyoil">
-            <strong>HYOIL PAGE TEST</strong>
-        </template>
-    </article>
+    <div style="margin-left: 10rem;">
+        <article id="article" class="article">
+            <!-- 첫 페이지 -->
+            <template v-if="contentList.start">
+                <div style="z-index: -1;">
+                    <video src="./videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
+                </div>
+            </template>
+            <!-- HYOIL 페이지 -->
+            <template v-if="contentList.hyoil">
+                <strong>HYOIL PAGE TEST</strong>
+            </template>
+        </article>
 
-    <!--footer-->
-    <footer class="footer">
-        <div class="content has-text-centered">
-          <p>
-            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-          </p>
-        </div>
-    </footer>
+        <!--footer-->
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                </p>
+            </div>
+        </footer>
+    </div>
 </body>
 
 </html>
