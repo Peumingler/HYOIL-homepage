@@ -1,54 +1,89 @@
-/*사이드바 관련 CSS*/
+/*PC용 CSS*/
 
-.sidebar {
-    height: 100%;
-    width: 10rem;
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    background-color: white;
+@media all and (min-width:1024px) {
+    /*사이드바 관련 CSS*/
+    .sidebar {
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        width: 10rem;
+        top: 0;
+        left: 0;
+        background-color: white;
+    }
+    .sidebar a {
+        /*A 태그를 수직으로 나열할 수 있게 block요소로 만든다*/
+        display: block;
+    }
+    .sidebar img {
+        position: absolute;
+        width: auto;
+        height: 40%;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .sidebar i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+    }
+    .sidebar i:hover {
+        color: grey;
+    }
+    .sidebar .bottom {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(270deg);
+        color: grey;
+    }
+    /*사이드메뉴*/
+    .sidemenu {
+        position: fixed;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        height: 100%;
+        width: 20rem;
+        top: 0%;
+        left: 10rem;
+        opacity: 0.9;
+        overflow: hidden;
+        background-color: whitesmoke;
+    }
+    .sidemenu a {
+        position: relative;
+        text-decoration: none;
+        color: red;
+    }
+    .sidemenu p {
+        color: black;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+    .sidemenu .menu {
+        margin-bottom: 1rem;
+    }
+    .sidemenu .lang {
+        text-align: right;
+    }
+    /*article 관련*/
+    .article {
+        height: 100%;
+        width: 100%;
+        background-color: whitesmoke;
+    }
+    .article video {
+        height: 100%;
+        width: 100%;
+    }
 }
 
-.sidebar a {
-    /*A 태그를 수직으로 나열할 수 있게 block요소로 만든다*/
-    display: block;
-}
 
-.sidebar img {
-    position: absolute;
-    width: auto;
-    height: 40%;
-    top: 0%;
-    left: 50%;
-    transform: translateX(-50%);
-}
+/*모바일용 CSS*/
 
-.sidebar i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.sidebar .bottom {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(270deg);
-    color: grey;
-}
-
-
-/*article 관련*/
-
-.article {
-    height: 100%;
-    width: 100%;
-    background-color: whitesmoke;
-}
-
-.article video {
-    height: 100%;
-    width: 100%;
-}
+@media all and (max-width:767px) {}
