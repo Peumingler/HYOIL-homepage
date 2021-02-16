@@ -1,74 +1,79 @@
-window.onload = function () {
-    var navbarMenu = new Vue({
-        el: '#navbarMenu',
+import gethtml from '/js/ajax.js';
+
+//쿼리스트링 파싱을 위한 함수
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+gethtml('hyoil.html').then(e => console.log());
+
+/*라우팅*/
+const HOME = { template: `<div style="z-index: -1;">
+<video src="./static/videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./static/images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
+</div>` };
+const HYOIL = { template: '<p>HYOIL</p>' };
+const HEALO = { template: '<p>HEALO</p>' };
+const AIEPS = { template: '<p>AIEPS</p>' };
+const KLCA = { template: '<p>KLCA</p>' };
+const CONTACT = { template: '<p>CONTACT</p>' };
+
+const routes = {
+    '/': HOME,
+    '/hyoil': HYOIL,
+    '/healo': HEALO,
+    '/aieps': AIEPS,
+    '/klca': KLCA,
+    '/contact': CONTACT
+}
+
+window.onload = function() {
+    //사이드 메뉴 버튼
+    var navbarBtn = new Vue({
+        el: '#menuBtn',
+        data: {
+            isActive: false,
+        },
         methods: {
-            change: function(content, subContent) { article.change(content, subContent) }
+            clicked: function() {
+                this.toggle();
+                sideMenu.toggle(); //사이드 메뉴 토글
+            },
+            toggle: function() {
+                this.isActive = ~this.isActive;
+            }
         }
     });
 
+    //사이드 메뉴 관련
+    var sideMenu = new Vue({
+        el: '#sidemenu',
+        data: {
+            isActive: false, //active 클래스 활성화 여부
+        },
+        methods: {
+            toggle: function() {
+                this.isActive = ~this.isActive;
+            }
+        }
+    });
+
+
+    //본문 관련
     var article = new Vue({
         el: '#article',
         data: {
-            currentContent: "start", //될수 있는 경우 - start, hyoil, healo, aieps, klca
-            currentSubContent: "1",
-            contentList: {
-                start: true,
-                hyoil: false,
-                healo: false,
-                aieps: false,
-                klca: false
+            currentRoute: getParameterByName('p')
+        },
+        computed: {
+            ArticleViewComponent() {
+                return routes[this.currentRoute];
             }
         },
-        methods: {
-            //article의 컨텐츠를 변경
-            change: function (content, subContent) {
-                //현재 컨텐츠와 같지 않을 경우 컨텐츠 변경
-                if (this.currentContent !== content) {
-                    switch (content) {
-                        case "hyoil":
-                            this.contentList.start = false;
-                            this.contentList.hyoil = true;
-                            this.contentList.healo = false;
-                            this.contentList.aieps = false;
-                            this.contentList.klca = false;
-                            break;
-                        case "healo":
-                            this.contentList.start = false;
-                            this.contentList.hyoil = false;
-                            this.contentList.healo = true;
-                            this.contentList.aieps = false;
-                            this.contentList.klca = false;
-                            break;
-                        case "aieps":
-                            this.contentList.start = false;
-                            this.contentList.hyoil = false;
-                            this.contentList.healo = false;
-                            this.contentList.aieps = true;
-                            this.contentList.klca = false;
-                            break;
-                        case "klca":
-                            this.contentList.start = false;
-                            this.contentList.hyoil = false;
-                            this.contentList.healo = false;
-                            this.contentList.aieps = false;
-                            this.contentList.klca = true;
-                            break;
-                        default:
-                            this.contentList.start = true;
-                            this.contentList.hyoil = false;
-                            this.contentList.healo = false;
-                            this.contentList.aieps = false;
-                            this.contentList.klca = false;
-                            break;
-                    }
-                    this.currentContent = content;
-                }
-
-                //컨텐츠 내부에서 이동
-
-                this.subContent = subContent;
-
-            }
+        render(h) {
+            return h(this.ArticleViewComponent);
         }
     });
 }

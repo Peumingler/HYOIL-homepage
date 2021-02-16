@@ -1,41 +1,48 @@
 /*PC용 CSS*/
 
 @media all and (min-width:1024px) {
+     :root {
+        /* 사이드메뉴 트랜지션 속도 변수 */
+        --sidemenu-transition-time: 0.3s
+    }
     /*사이드바 관련 CSS*/
     .sidebar {
         position: fixed;
         z-index: 999;
         height: 100%;
-        width: 8rem;
+        width: 5rem;
         top: 0;
         left: 0;
         background-color: white;
     }
-    .sidebar a {
-        /*A 태그를 수직으로 나열할 수 있게 block요소로 만든다*/
-        display: block;
-    }
     .sidebar img {
         position: absolute;
-        width: auto;
-        height: 40%;
+        width: 100%;
+        height: auto;
         top: 0%;
         left: 50%;
         transform: translateX(-50%);
     }
-    .sidebar i {
+    .sidebar .btn {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) rotate(180deg);
         color: black;
+        /* 트랜지션 효 */
+        transition: var(--sidemenu-transition-time) ease-in-out;
     }
-    .sidebar i:hover {
+    .sidebar .btn:hover {
         color: grey;
+    }
+    .sidebar .btn:not(.active) {
+        transform: translate(-50%, -50%) rotate(0deg);
+        /* 트랜지션 효과  */
+        transition: var(--sidemenu-transition-time) ease-in-out;
     }
     .sidebar .bottom {
         position: absolute;
-        top: 80%;
+        top: 90%;
         left: 50%;
         transform: translate(-50%, -50%) rotate(270deg);
         color: grey;
@@ -43,42 +50,67 @@
     /*사이드메뉴*/
     .sidemenu {
         position: fixed;
-        padding: 1rem 1rem 1rem 1rem;
+        z-index: 998;
         height: 100%;
         width: 20rem;
         top: 0%;
-        left: 8rem;
+        left: 5rem;
         opacity: 0.9;
         overflow-x: hidden;
         overflow-y: scroll;
         background-color: whitesmoke;
+        /*사이드메뉴 애니메이션 효과*/
+        transition: var(--sidemenu-transition-time) ease-in-out;
     }
-    .sidemenu a {
+    /*active 클래스가 없으면 사이드메뉴 표시안함.*/
+    .sidemenu:not(.active) {
+        transform: translateX(-20rem);
+        /*사이드메뉴 애니메이션 효과*/
+        transition: var(--sidemenu-transition-time) ease-in-out;
+    }
+    .sidemenu .menu {
+        padding: 1rem;
+    }
+    .sidemenu .menu a {
         position: relative;
         text-decoration: none;
         color: grey;
     }
-    .sidemenu a:hover {
-        color: skyblue;
+    .sidemenu .menu a:hover {
+        font-weight: bold;
+        color: black;
     }
-    .sidemenu p {
+    .sidemenu .menu p {
         color: black;
         font-weight: bold;
         font-size: 2rem;
     }
-    .sidemenu .menu {
-        margin-bottom: 1rem;
-    }
     .sidemenu .lang {
-        text-align: right;
+        padding: 1rem;
+        width: 100%;
+    }
+    .sidemenu .lang li {
+        display: inline;
+    }
+    .sidemenu .lang a {
+        text-decoration: none;
+        color: grey;
+    }
+    .sidemenu .lang a:hover {
+        font-weight: bold;
+        color: black;
+    }
+    /*info 페이지 관련*/
+    .info {
+        margin-left: 5rem;
     }
     /*article 관련*/
-    .article {
+    .info .article {
         height: 100%;
         width: 100%;
         background-color: whitesmoke;
     }
-    .article video {
+    .info .article video {
         height: 100%;
         width: 100%;
     }

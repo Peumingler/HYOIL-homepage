@@ -9,100 +9,90 @@
     <!--import icon by css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <!--import js-->
-    <script src="js/framework/vue.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/framework/vue.js" type="module"></script>
+    <script src="js/main.js" type="module"></script>
 
     <title>HYOIL</title>
 </head>
 
 <body>
     <!-- TODO: 동영상이 없는 곳에서 has-navbar-fixed-top 추가-->
-    <!--상단 navbar-->
+    <!---->
     <nav class="sidebar">
         <!--로고 : 사이드바의 40% 차지 -->
         <a>
-            <img src="images/hyoil_logo.png">
+            <img src="static/images/hyoil_logo_rotate.png">
         </a>
         <a>
-            <i class="fas fa-angle-double-right fa-3x"></i>
+            <i class="btn fas fa-angle-double-right fa-3x" id="menuBtn" v-on:click="clicked" v-bind:class="{active : isActive}"></i>
         </a>
         <p class="bottom">
             HYOIL Corporation
         </p>
+    </nav>
+    <!--사이드메뉴-->
+    <aside class="sidemenu" id="sidemenu" v-bind:class="{active : isActive}">
+        <!--언어설정-->
+        <div>
+            <ul class="lang">
+                <li>
+                    <a>KR</a>
+                </li>
+                <li>
+                    <a>CN</a>
+                </li>
+            </ul>
+        </div>
 
-        <div class="sidemenu">
-            <!--사이드메뉴-->
-            <div>
-                <div class="menu">
-                    <p>HYOIL</p>
-                    <ul>
-                        <li><a>우리는</a></li>
-                        <li><a>인사말</a></li>
-                        <li><a>회사개요</a></li>
-                        <li><a>회사현항</a></li>
-                        <li><a>개발현황</a></li>
-                        <li><a>Vision</a></li>
-                    </ul>
-                </div>
-                <div class="menu">
-                    <p>HEALO</p>
-                    <ul>
-                        <li><a>학교 체육수업</a></li>
-                        <li><a>체육학원</a></li>
-                        <li><a>APT 커뮤니티센터</a></li>
-                        <li><a>헬스 트레이닝</a></li>
-                        <li><a>K-POP 댄스</a></li>
-                        <li><a>메디컬 센터</a></li>
-                    </ul>
-                </div>
-                <div class="menu">
-                    <p>AI EPS</p>
-                    <ul>
-                        <li><a>운동처방서비스</a></li>
-                    </ul>
-                </div>
-                <div class="menu">
-                    <p>KLCA</p>
-                    <ul>
-                        <li><a>인터넷 강의</a></li>
-                    </ul>
-                </div>
-                <div class="menu">
-                    <p>Contact</p>
-                    <ul>
-                        <li><a>문의</a></li>
-                    </ul>
-                </div>
+        <div>
+            <div class="menu">
+                <p>HYOIL</p>
+                <ul>
+                    <li><a>우리는</a></li>
+                    <li><a>인사말</a></li>
+                    <li><a>회사개요</a></li>
+                    <li><a>회사현항</a></li>
+                    <li><a>개발현황</a></li>
+                    <li><a>Vision</a></li>
+                </ul>
             </div>
-
-            <!--언어설정-->
-            <div>
-                <ul class="lang">
-                    <li>
-                        <a>KR</a>
-                    </li>
-                    <li>
-                        <a>CN</a>
-                    </li>
+            <div class="menu">
+                <p>HEALO</p>
+                <ul>
+                    <li><a>학교 체육수업</a></li>
+                    <li><a>체육학원</a></li>
+                    <li><a>APT 커뮤니티센터</a></li>
+                    <li><a>헬스 트레이닝</a></li>
+                    <li><a>K-POP 댄스</a></li>
+                    <li><a>메디컬 센터</a></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <p>AI EPS</p>
+                <ul>
+                    <li><a>운동처방서비스</a></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <p>KLCA</p>
+                <ul>
+                    <li><a>인터넷 강의</a></li>
+                </ul>
+            </div>
+            <div class="menu">
+                <p>Contact</p>
+                <ul>
+                    <li><a>문의</a></li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </aside>
 
     <!--메인 페이지-->
-    <div style="margin-left: 8rem;">
-        <article id="article" class="article">
-            <!-- 첫 페이지 -->
-            <template v-if="contentList.start">
-                <div style="z-index: -1;">
-                    <video src="./videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
-                </div>
-            </template>
-            <!-- HYOIL 페이지 -->
-            <template v-if="contentList.hyoil">
-                <strong>HYOIL PAGE TEST</strong>
-            </template>
+    <div class="info">
+        <article class="article">
+            <div id="article"></div>
+
         </article>
 
         <!--footer-->
