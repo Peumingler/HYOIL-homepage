@@ -1,3 +1,4 @@
+// HTML을 ajax로 가져오는 function
 export default function gethtml(filename) {
     return new Promise((resolve, reject) => {
         fetch("/template/" + filename) // (/test.json) 호출 (GET)

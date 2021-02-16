@@ -8,72 +8,64 @@ function getParameterByName(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-gethtml('hyoil.html').then(e => console.log());
-
 /*라우팅*/
-const HOME = { template: `<div style="z-index: -1;">
-<video src="./static/videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./static/images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
-</div>` };
-const HYOIL = { template: '<p>HYOIL</p>' };
-const HEALO = { template: '<p>HEALO</p>' };
-const AIEPS = { template: '<p>AIEPS</p>' };
-const KLCA = { template: '<p>KLCA</p>' };
-const CONTACT = { template: '<p>CONTACT</p>' };
-
-const routes = {
-    '/': HOME,
-    '/hyoil': HYOIL,
-    '/healo': HEALO,
-    '/aieps': AIEPS,
-    '/klca': KLCA,
-    '/contact': CONTACT
+let routes = {
+    '/': { template: '' },
+    '/hyoil': { template: '' },
+    '/healo': { template: '' },
+    '/aieps': { template: '' },
+    '/klca': { template: '' },
+    '/contact': { template: '' }
 }
 
-window.onload = function() {
+window.onload = async function() {
+    for (const key in routes) {
+        routes[key].template = await gethtml(key.slice(1));
+    }
     //사이드 메뉴 버튼
-    var navbarBtn = new Vue({
-        el: '#menuBtn',
-        data: {
-            isActive: false,
+    const SideMenuBtn = Vue.createApp({
+        data() {
+            return {
+                isActive: false
+            }
         },
         methods: {
-            clicked: function() {
+            clicked() {
                 this.toggle();
-                sideMenu.toggle(); //사이드 메뉴 토글
+                SideMenu.toggle();
             },
-            toggle: function() {
+            toggle() {
                 this.isActive = ~this.isActive;
             }
         }
-    });
-
-    //사이드 메뉴 관련
-    var sideMenu = new Vue({
-        el: '#sidemenu',
-        data: {
-            isActive: false, //active 클래스 활성화 여부
+    }).mount('#menuBtn');
+    // 사이드메뉴
+    const SideMenu = Vue.createApp({
+        data() {
+            return {
+                isActive: false, //active 클래스 활성화 여부
+            }
         },
         methods: {
-            toggle: function() {
+            toggle() {
                 this.isActive = ~this.isActive;
             }
         }
-    });
-
-
-    //본문 관련
-    var article = new Vue({
-        el: '#article',
-        data: {
-            currentRoute: getParameterByName('p')
+    }).mount('#sidemenu');
+    // 본문 관련
+    const Article = Vue.createApp({
+        data() {
+            return {
+                currentRoute: getParameterByName('p'),
+            }
         },
         computed: {
             ArticleViewComponent() {
-                return routes[this.currentRoute];
+                return routes[this.currentRoute] || NotFoundComponent;
             }
         },
-        render(h) {
-            return h(this.ArticleViewComponent);
+        render() {
+            return Vue.h(this.ArticleViewComponent);
         }
-    });
+    }).mount('#article');
 }
