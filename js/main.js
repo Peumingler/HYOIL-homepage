@@ -1,4 +1,4 @@
-import gethtml from '/js/ajax.js';
+import gethtml from 'js/ajax.js';
 
 //쿼리스트링 파싱을 위한 함수
 function getParameterByName(name) {
