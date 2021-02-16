@@ -10,7 +10,9 @@ function getParameterByName(name) {
 
 /*라우팅*/
 let routes = {
-    '/': { template: '' },
+    '/': { template: `<div style="z-index: -1;">
+    <video src="./static/videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./static/images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
+</div>` },
     '/hyoil': { template: '' },
     '/healo': { template: '' },
     '/aieps': { template: '' },
@@ -19,14 +21,16 @@ let routes = {
 }
 
 window.onload = async function() {
+    //article 데이터 로드
     for (const key in routes) {
+        if (key === '/') { continue; } //root일 경우 패스
         routes[key].template = await gethtml(key.slice(1));
     }
     //사이드 메뉴 버튼
     const SideMenuBtn = Vue.createApp({
         data() {
             return {
-                isActive: false
+                isActive: false //active 클래스 활성화 여부 
             }
         },
         methods: {
@@ -39,6 +43,7 @@ window.onload = async function() {
             }
         }
     }).mount('#menuBtn');
+
     // 사이드메뉴
     const SideMenu = Vue.createApp({
         data() {
@@ -52,6 +57,7 @@ window.onload = async function() {
             }
         }
     }).mount('#sidemenu');
+
     // 본문 관련
     const Article = Vue.createApp({
         data() {
