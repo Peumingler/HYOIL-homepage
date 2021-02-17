@@ -24,7 +24,7 @@ window.onload = async function() {
     //article 데이터 로드
     for (const key in routes) {
         if (key === '/') { continue; } //root일 경우 패스
-        routes[key].template = await gethtml(key.slice(1));
+        routes[key].template = await gethtml(key.slice(1) + ".html");
     }
     //사이드 메뉴 버튼
     const SideMenuBtn = Vue.createApp({

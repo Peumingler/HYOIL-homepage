@@ -90,6 +90,7 @@
         width: 100%;
     }
     .sidemenu .lang li {
+        padding: 0.1rem;
         display: inline;
     }
     .sidemenu .lang a {
@@ -104,19 +105,19 @@
     .info {
         margin-left: 5rem;
     }
-    /*article 관련*/
-    .info .article {
-        height: 100%;
-        width: 100%;
-        background-color: whitesmoke;
-    }
-    .info .article video {
-        height: 100%;
-        width: 100%;
-    }
 }
 
 
 /*모바일용 CSS*/
 
 @media all and (max-width:767px) {}
+
+
+/* article쪽 관련 CSS */
+
+.article {
+    background-color: white;
+}
+
+
+/* hyoil.html */
