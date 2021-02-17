@@ -121,3 +121,12 @@
 
 
 /* hyoil.html */
+
+.underline {
+    text-decoration: dotted underline;
+}
+
+.dotlist {
+    list-style: circle;
+    margin-left: 1.3rem;
+}
