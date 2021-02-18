@@ -81,6 +81,7 @@ function getParameterByName(name) {
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+//페이지 로드 후 #id로 이동하는 함수
 function moveToHash() {
     let hash = window.location.hash.substr(1);;
     if (hash) {
