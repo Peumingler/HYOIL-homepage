@@ -144,7 +144,7 @@
         /* 메뉴 트랜지션 시간 */
         --sidemenu-transition-time: 0.3s;
         /* 상단바 높이 */
-        --sidebar-height: 5rem;
+        --sidebar-height: 4rem;
     }
     .sidebar {
         position: fixed;

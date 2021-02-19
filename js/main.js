@@ -3,12 +3,34 @@ import gethtml from "./ajax.js";
 window.onload = async function() {
     //라우팅 template 로드
     for (const key in routes) {
+        // url에서 언어설정을 가져옴
+        let language = getParameterByName('p').split('/')[1];
+        // let language = getParameterByName('lang');
+        console.log(getParameterByName('p').split('/')[2]);
+
+        // 템플릿 로드
         if (key === '/') { continue; } //root일 경우 패스
-        routes[key].template = await gethtml(key.slice(1) + ".html");
+        routes[key].template = await gethtml("/" + language + key + ".html");
     }
 
-
     /*Vue 관련 코드들*/
+    // 본문 관련
+    const Article = Vue.createApp({
+        data() {
+            return {
+                currentRoute: "/" + getParameterByName('p').split('/')[2], // 예시 : /kr/hoyil 일 경우 /hyoil 만 가져온다
+            }
+        },
+        computed: {
+            ArticleViewComponent() {
+                return routes[this.currentRoute] || NotFoundComponent;
+            }
+        },
+        render() {
+            return Vue.h(this.ArticleViewComponent);
+        }
+    }).mount('#article');
+
     //사이드 메뉴 버튼
     const SideMenuBtn = Vue.createApp({
         data() {
@@ -41,23 +63,6 @@ window.onload = async function() {
         }
     }).mount('#sidemenu');
 
-    // 본문 관련
-    const Article = Vue.createApp({
-        data() {
-            return {
-                currentRoute: getParameterByName('p'),
-            }
-        },
-        computed: {
-            ArticleViewComponent() {
-                return routes[this.currentRoute] || NotFoundComponent;
-            }
-        },
-        render() {
-            return Vue.h(this.ArticleViewComponent);
-        }
-    }).mount('#article');
-
     moveToHash();
 }
 
@@ -68,8 +73,6 @@ let routes = {
 </div>` },
     '/hyoil': { template: '' },
     '/healo': { template: '' },
-    '/aieps': { template: '' },
-    '/klca': { template: '' },
     '/contact': { template: '' }
 }
 

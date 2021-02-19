@@ -18,7 +18,7 @@
 <body>
     <!-- TODO: 동영상이 없는 곳에서 has-navbar-fixed-top 추가-->
     <!--사이드바-->
-    <nav class="sidebar">
+    <aside class="sidebar">
         <!-- 배너 -->
         <a href="/?p=/">
             <img src="static/images/hyoil_logo_rotate.png" class="logo-rotate">
@@ -34,9 +34,9 @@
         <p class="bottom">
             HYOIL Corporation
         </p>
-    </nav>
+    </aside>
     <!--사이드메뉴-->
-    <aside id="sidemenu">
+    <nav id="sidemenu">
         <div class="sidemenu" v-bind:class="{active : isActive}">
             <!--언어설정-->
             <div>
@@ -52,8 +52,8 @@
 
             <div id="menus">
                 <div class="menu">
-                    <p>HYOIL</p>
-                    <ul>
+                    <p class="is-size-1-touch">HYOIL</p>
+                    <ul class="is-size-3-touch">
                         <li><a href="./?p=/hyoil#we-are">우리는</a></li>
                         <li><a href="./?p=/hyoil#greeting">인사말</a></li>
                         <li><a href="./?p=/hyoil#company-status">회사현항</a></li>
@@ -62,8 +62,8 @@
                     </ul>
                 </div>
                 <div class="menu">
-                    <p>HEALO</p>
-                    <ul>
+                    <p class="is-size-1-touch">HEALO</p>
+                    <ul class="is-size-3-touch">
                         <li><a href="./?p=/healo#physical-edu">학교 체육수업 & 체육학원</a></li>
                         <li><a href="./?p=/healo#apartment">APT 커뮤니티센터</a></li>
                         <li><a href="./?p=/healo#training">헬스 트레이닝</a></li>
@@ -72,35 +72,35 @@
                     </ul>
                 </div>
                 <div class="menu">
-                    <p>AI EPS</p>
-                    <ul>
+                    <p class="is-size-1-touch">AI EPS</p>
+                    <ul class="is-size-3-touch">
                         <li><a href="http://211.185.64.98/">운동처방서비스</a></li>
                     </ul>
                 </div>
                 <div class="menu">
-                    <p>KLCA</p>
-                    <ul>
+                    <p class="is-size-1-touch">KLCA</p>
+                    <ul class="is-size-3-touch">
                         <li><a href="./?p=/klca" class="disable">인터넷 강의</a></li>
                     </ul>
                 </div>
                 <div class="menu">
-                    <p>Contact</p>
-                    <ul>
+                    <p class="is-size-1-touch">Contact</p>
+                    <ul class="is-size-3-touch">
                         <li><a href="./?p=/contact">문의</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </aside>
+    </nav>
 
     <!--메인 페이지-->
     <div class="info">
-        <article class="article" id="article">
+        <main class="article" id="article">
             <div></div>
-        </article>
+        </main>
 
         <!--footer-->
-        <footer class="footer">
+        <footer class="footer" style="margin-top: 5rem;">
             <div class="content has-text-centered">
                 <p>
                     <strong>Bulma</strong> by <a href="https://jgthms.com ">Jeremy Thomas</a>. The source code is licensed
