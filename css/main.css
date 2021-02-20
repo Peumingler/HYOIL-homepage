@@ -144,7 +144,7 @@
         /* 메뉴 트랜지션 시간 */
         --sidemenu-transition-time: 0.3s;
         /* 상단바 높이 */
-        --sidebar-height: 4rem;
+        --sidebar-height: 2rem;
     }
     .sidebar {
         position: fixed;
@@ -172,6 +172,7 @@
         top: 50%;
         right: 0;
         transform: translate(-50%, -50%) rotate(0);
+        font-size: 1.5rem;
         color: black;
         /* 트랜지션 효과 */
         transition: var(--sidemenu-transition-time) ease-in-out;
@@ -189,6 +190,7 @@
     }
     /*사이드메뉴*/
     .sidemenu {
+        margin-top: var(--sidebar-height);
         position: fixed;
         z-index: 998;
         height: 100%;

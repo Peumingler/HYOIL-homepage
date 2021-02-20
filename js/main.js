@@ -1,12 +1,18 @@
+import routing from "./routing.js";
 import gethtml from "./ajax.js";
+
+//언어json
+import KrJson from "../config/language_kr.js";
+import EnJson from "../config/language_en.js";
+
+//최초접속 routing
+routing.init();
 
 window.onload = async function() {
     //라우팅 template 로드
     for (const key in routes) {
         // url에서 언어설정을 가져옴
         let language = getParameterByName('p').split('/')[1];
-        // let language = getParameterByName('lang');
-        console.log(getParameterByName('p').split('/')[2]);
 
         // 템플릿 로드
         if (key === '/') { continue; } //root일 경우 패스
@@ -31,7 +37,7 @@ window.onload = async function() {
         }
     }).mount('#article');
 
-    //사이드 메뉴 버튼
+    //사이드 메뉴 열고닫는 버튼
     const SideMenuBtn = Vue.createApp({
         data() {
             return {
@@ -54,15 +60,41 @@ window.onload = async function() {
         data() {
             return {
                 isActive: false, //active 클래스 활성화 여부
+                menu: KrJson //언어설정
             }
         },
         methods: {
             toggle() {
                 this.isActive = ~this.isActive;
+            },
+            changeLanguage(language) {
+                console.log("language change detected");
+                //url 변경
+                routing.changeLanguage(language);
+                //데이터 변경
+                switch (language) {
+                    case "ko":
+                        this.menu = KrJson;
+                        break;
+                    case "en":
+                        this.menu = EnJson;
+                        break;
+                }
             }
+
         }
     }).mount('#sidemenu');
 
+    // 로고
+    const Logo = Vue.createApp({
+        data() {
+            return {
+                logoLink: SideMenu.menu.logo.href
+            }
+        }
+    }).mount('#logo');
+
+    //페이지 로드 후 #으로 이동
     moveToHash();
 }
 
@@ -74,7 +106,16 @@ let routes = {
     '/hyoil': { template: '' },
     '/healo': { template: '' },
     '/contact': { template: '' }
-}
+};
+
+// function languageFileChange(language) {
+//     switch (language) {
+//         case "ko":
+//             return KrJson;
+//         case "en":
+//             return EnJson;
+//     }
+// }
 
 //쿼리스트링 파싱을 위한 함수
 function getParameterByName(name) {
