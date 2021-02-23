@@ -16,6 +16,10 @@
 </head>
 
 <body>
+    <!-- JavaScript가 작동하지 않는 경우 -->
+    <noscript>
+        <p class="title has-text-danger">현재 사용 중인 브라우저는 스크립트를 지원하지 않거나, 해당 기능이 활성화되어 있지 않습니다.</p>
+    </noscript>
     <!--사이드바-->
     <aside class="sidebar">
         <!-- 배너 -->
@@ -47,6 +51,9 @@
                     </li>
                     <li>
                         <a v-on:click="changeLanguage('en')">EN</a>
+                    </li>
+                    <li>
+                        <a v-on:click="changeLanguage('zh')">ZH</a>
                     </li>
                 </ul>
             </div>

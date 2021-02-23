@@ -1,8 +1,9 @@
 import KrJson from "../config/language_kr.js";
 import EnJson from "../config/language_en.js";
+import ZhJson from "../config/language_zh.js"; //중국어
 
 export default {
-    //URL상의 언어에 따라 메뉴 데이터를 가져온다.
+    // URL상의 언어에 따라 메뉴 데이터를 가져온다.
     getMenuJson() {
         return new Promise((resolve, reject) => {
             let currentLanguage = getParameterByName('p').split('/')[1];
@@ -12,6 +13,9 @@ export default {
                     break;
                 case EnJson.languageName:
                     resolve(EnJson);
+                    break;
+                case ZhJson.languageName:
+                    resolve(ZhJson);
                     break;
                 default:
                     resolve(KrJson);

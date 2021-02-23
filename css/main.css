@@ -190,7 +190,7 @@
     }
     /*사이드메뉴*/
     .sidemenu {
-        margin-top: var(--sidebar-height);
+        padding-top: var(--sidebar-height);
         position: fixed;
         z-index: 998;
         height: 100%;

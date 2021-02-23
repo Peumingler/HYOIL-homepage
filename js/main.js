@@ -1,9 +1,6 @@
 import routing from "./routing.js";
 import gethtml from "./ajax.js";
 import dataControl from "./dataControl.js";
-//언어json
-import KrJson from "../config/language_kr.js";
-import EnJson from "../config/language_en.js";
 
 //최초접속 routing
 routing.init();
@@ -81,12 +78,12 @@ window.onload = async function() {
     const Logo = Vue.createApp({
         data() {
             return {
-                logoLink: SideMenu.menu.logo.href
+                logoLink: SideMenu.menu.logo.href //로고에 걸리는 링크 :: 언어에 따라 변경됨
             }
         }
     }).mount('#logo');
 
-    //페이지 로드 후 #으로 이동
+    //페이지 로드 후 hash로 이동
     moveToHash();
 }
 
@@ -99,15 +96,6 @@ let routes = {
     '/healo': { template: '' },
     '/contact': { template: '' }
 };
-
-// function languageFileChange(language) {
-//     switch (language) {
-//         case "ko":
-//             return KrJson;
-//         case "en":
-//             return EnJson;
-//     }
-// }
 
 //쿼리스트링 파싱을 위한 함수
 function getParameterByName(name) {
