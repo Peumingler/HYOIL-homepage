@@ -30,7 +30,7 @@ export default {
         }
     },
     healo: {
-        listname: "Healo",
+        listname: "HEALO",
         list: {
             physicalEdu: {
                 "title": "Physical class at School & Academy",
@@ -73,7 +73,7 @@ export default {
         }
     },
     contact: {
-        listname: 'Contact',
+        listname: 'CONTACT',
         list: {
             contact: {
                 "title": "Contact",

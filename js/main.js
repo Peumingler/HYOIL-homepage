@@ -5,6 +5,24 @@ import dataControl from "./dataControl.js";
 //최초접속 routing
 routing.init();
 
+/*라우팅*/
+let routes = {
+    '/': { template: `<div style="z-index: -1;">
+    <video src="./static/videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./static/images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
+</div>` },
+    '/hyoil': { template: '' },
+    '/healo': { template: '' },
+    '/contact': { template: '' }
+};
+
+//페이지 로드 후 hash로 이동하는 함수
+function moveToHash() {
+    let hash = window.location.hash.substr(1);;
+    if (hash) {
+        document.getElementById(hash).scrollIntoView({ behavior: "smooth" });
+    }
+}
+
 window.onload = async function() {
     //라우팅 template 로드
     for (const key in routes) {
@@ -87,28 +105,10 @@ window.onload = async function() {
     moveToHash();
 }
 
-/*라우팅*/
-let routes = {
-    '/': { template: `<div style="z-index: -1;">
-    <video src="./static/videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./static/images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
-</div>` },
-    '/hyoil': { template: '' },
-    '/healo': { template: '' },
-    '/contact': { template: '' }
-};
-
 //쿼리스트링 파싱을 위한 함수
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-//페이지 로드 후 #id로 이동하는 함수
-function moveToHash() {
-    let hash = window.location.hash.substr(1);;
-    if (hash) {
-        document.getElementById(hash).scrollIntoView({ behavior: "smooth" });
-    }
 }

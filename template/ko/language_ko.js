@@ -5,7 +5,7 @@ export default {
     },
     //메뉴
     hyoil: {
-        listname: "Hyoil",
+        listname: "HYOIL",
         list: {
             weare: {
                 "title": "우리는",
@@ -30,7 +30,7 @@ export default {
         }
     },
     healo: {
-        listname: "Healo",
+        listname: "HEALO",
         list: {
             physicalEdu: {
                 "title": "학교 체육수업 & 체육학원",
@@ -64,7 +64,7 @@ export default {
         }
     },
     klca: {
-        listname: 'Klca',
+        listname: 'KLCA',
         list: {
             internetClass: {
                 "title": "인터넷 강의",
@@ -73,7 +73,7 @@ export default {
         }
     },
     contact: {
-        listname: 'Contact',
+        listname: 'CONTACT',
         list: {
             contact: {
                 "title": "문의",

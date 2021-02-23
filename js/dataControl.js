@@ -1,6 +1,6 @@
-import KrJson from "../config/language_kr.js";
-import EnJson from "../config/language_en.js";
-import ZhJson from "../config/language_zh.js"; //중국어
+import KrJson from "../template/ko/language_ko.js";
+import EnJson from "../template/en/language_en.js";
+import ZhJson from "../template/zh/language_zh.js"; //중국어
 
 export default {
     // URL상의 언어에 따라 메뉴 데이터를 가져온다.

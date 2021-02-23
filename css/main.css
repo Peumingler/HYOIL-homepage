@@ -1,7 +1,7 @@
 /* article쪽 관련 CSS */
 
 .article {
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 
@@ -144,7 +144,7 @@
         /* 메뉴 트랜지션 시간 */
         --sidemenu-transition-time: 0.3s;
         /* 상단바 높이 */
-        --sidebar-height: 2rem;
+        --sidebar-height: 3rem;
     }
     .sidebar {
         position: fixed;
