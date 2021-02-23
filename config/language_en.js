@@ -1,25 +1,26 @@
 export default {
+    languageName: "en",
     logo: {
         href: "./?p=/en/"
     },
     //메뉴
     hyoil: {
-        listname: "Hyoil",
+        listname: "HYOIL",
         list: {
             weare: {
-                "title": "we are",
+                "title": "We Are",
                 "href": "./?p=/en/hyoil#we-are"
             },
             greeting: {
-                "title": "greeting",
+                "title": "Greeting",
                 "href": "./?p=/en/hyoil#greeting"
             },
             companyStatus: {
-                "title": "company status",
+                "title": "Company Status",
                 "href": "./?p=/en/hyoil#company-status"
             },
             devStatus: {
-                "title": "development status",
+                "title": "Development Status",
                 "href": "./?p=/en/hyoil#dev-status"
             },
             vision: {
@@ -32,23 +33,23 @@ export default {
         listname: "Healo",
         list: {
             physicalEdu: {
-                "title": "physical class at school & academy",
+                "title": "Physical class at School & Academy",
                 "href": "./?p=/en/healo#physical-edu"
             },
             apartment: {
-                "title": "apartment community",
+                "title": "Apartment Community",
                 "href": "./?p=/en/healo#apartment"
             },
             training: {
-                "title": "fitness training",
+                "title": "Fitness Training",
                 "href": "./?p=/en/healo#training"
             },
             kPop: {
-                "title": "k-pop dance",
+                "title": "K-POP Dance",
                 "href": "./?p=/en/healo#k-pop"
             },
             medical: {
-                "title": "medical center",
+                "title": "Medical Center",
                 "href": "./?p=/en/healo#medical"
             }
         }
@@ -57,7 +58,7 @@ export default {
         listname: "AI EPS",
         list: {
             service: {
-                "title": "운동처방서비스",
+                "title": "Exercise prescription",
                 "href": "http://211.185.64.98/"
             }
         }
@@ -75,7 +76,7 @@ export default {
         listname: 'Contact',
         list: {
             contact: {
-                "title": "contact",
+                "title": "Contact",
                 "href": "./?p=/en/contact"
             }
         }

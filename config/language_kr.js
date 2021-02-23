@@ -1,4 +1,5 @@
 export default {
+    languageName: "ko",
     logo: {
         href: "./?p=/ko/"
     },

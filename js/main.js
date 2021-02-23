@@ -1,6 +1,6 @@
 import routing from "./routing.js";
 import gethtml from "./ajax.js";
-
+import dataControl from "./dataControl.js";
 //언어json
 import KrJson from "../config/language_kr.js";
 import EnJson from "../config/language_en.js";
@@ -56,11 +56,12 @@ window.onload = async function() {
     }).mount('#menuBtn');
 
     // 사이드메뉴
+    let jsonData = await dataControl.getMenuJson();
     const SideMenu = Vue.createApp({
         data() {
             return {
                 isActive: false, //active 클래스 활성화 여부
-                menu: KrJson //언어설정
+                menu: jsonData //언어설정
             }
         },
         methods: {
@@ -71,15 +72,6 @@ window.onload = async function() {
                 console.log("language change detected");
                 //url 변경
                 routing.changeLanguage(language);
-                //데이터 변경
-                switch (language) {
-                    case "ko":
-                        this.menu = KrJson;
-                        break;
-                    case "en":
-                        this.menu = EnJson;
-                        break;
-                }
             }
 
         }

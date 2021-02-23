@@ -4,13 +4,16 @@ export default {
         if (getParameterByName('p') === "/" || getParameterByName('p') === "") {
             let userLanguage = navigator.language.slice(0, 2); //ko-KR -> ko
             history.replaceState({}, null, "./?p=/" + userLanguage + "/");
-        } else if (getParameterByName('p').slice(1, 3) === "ko") {
+        } else if (getParameterByName('p').split('/')[1]) {
 
         }
     },
+    //URL을 해당 언어로 변경한다
     changeLanguage(language) {
-        window.location.href = "./?p=/" + language + "/";
-    }
+        // history.pushState({}, null, "./?p=/" + language + "/");
+        window.location.href = "./?p=/" + language + "/" + getParameterByName('p').split('/')[2];
+    },
+
 }
 
 function getParameterByName(name) {
