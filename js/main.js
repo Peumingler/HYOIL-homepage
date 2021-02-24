@@ -7,9 +7,7 @@ routing.init();
 
 /*라우팅*/
 let routes = {
-    '/': { template: `<div style="z-index: -1;">
-    <video src="./static/videos/hyoil_intro_cn.mp4" type="video/ogg" poster="./static/images/image_bg.png" loop controls autoplay muted>브라우저가 지원하지 않는 기능입니다.</video>
-</div>` },
+    '/main': { template: '' },
     '/hyoil': { template: '' },
     '/healo': { template: '' },
     '/contact': { template: '' }
@@ -30,7 +28,6 @@ window.onload = async function() {
         let language = getParameterByName('p').split('/')[1];
 
         // 템플릿 로드
-        if (key === '/') { continue; } //root일 경우 패스
         routes[key].template = await gethtml("/" + language + key + ".html");
     }
 
@@ -39,7 +36,7 @@ window.onload = async function() {
     const Article = Vue.createApp({
         data() {
             return {
-                currentRoute: "/" + getParameterByName('p').split('/')[2], // 예시 : /kr/hoyil 일 경우 /hyoil 만 가져온다
+                currentRoute: "/" + getParameterByName('p').split('/')[2], // 예시 : /kr/hoyil 일 경우 hyoil 만 가져온다
             }
         },
         computed: {

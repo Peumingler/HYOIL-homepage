@@ -1,7 +1,7 @@
 export default {
     languageName: "en",
     logo: {
-        href: "./?p=/en/"
+        href: "./?p=/en/main"
     },
     //메뉴
     hyoil: {
